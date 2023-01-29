@@ -7,8 +7,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class HikariCPDataSource {
-    private static HikariConfig config = new HikariConfig();
-    private static HikariDataSource ds;
+    private static final HikariConfig config = new HikariConfig();
+    private static final HikariDataSource ds;
 
     static {
         config.setJdbcUrl("jdbc:postgresql://localhost:5432/course_db");
@@ -22,6 +22,10 @@ public class HikariCPDataSource {
 
     public static Connection getConnection() throws SQLException {
         return ds.getConnection();
+    }
+
+    public static void closeDS() {
+        ds.close();
     }
 
     private HikariCPDataSource(){}
