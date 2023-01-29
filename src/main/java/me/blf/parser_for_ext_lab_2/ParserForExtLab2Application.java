@@ -25,9 +25,9 @@ public class ParserForExtLab2Application {
 
     public static void processGenome(String fileName, String genomeName) throws IOException {
         var genomeStr = Files.readString(Path.of(fileName)).replace("\n","");
-        GenSeqWriter.writeSequences(genomeName,2,splitIntoShingles(genomeStr, 2));
-        GenSeqWriter.writeSequences(genomeName,5,splitIntoShingles(genomeStr, 5));
-        GenSeqWriter.writeSequences(genomeName,9,splitIntoShingles(genomeStr, 9));
+        GenSeqDAO.insertSequences(genomeName,2,splitIntoShingles(genomeStr, 2));
+        GenSeqDAO.insertSequences(genomeName,5,splitIntoShingles(genomeStr, 5));
+        GenSeqDAO.insertSequences(genomeName,9,splitIntoShingles(genomeStr, 9));
     }
 
     public static List<String> splitIntoShingles(String txt, int size) {
